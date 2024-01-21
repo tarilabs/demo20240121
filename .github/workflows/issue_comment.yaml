@@ -2,6 +2,9 @@ name: Count RSVPs
 
 on: issue_comment
 
+permissions:
+  issues: write
+
 jobs:
   issue_commented:
     # This job only runs for issue comments
