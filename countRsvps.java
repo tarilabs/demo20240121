@@ -1,4 +1,5 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
+//JAVA 21+
 //DEPS info.picocli:picocli:4.6.3
 //DEPS org.kohsuke:github-api:1.318
 
