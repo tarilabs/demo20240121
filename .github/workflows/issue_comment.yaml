@@ -1,0 +1,27 @@
+name: Count RSVPs
+
+on: issue_comment
+
+jobs:
+  issue_commented:
+    # This job only runs for issue comments
+    name: Issue comment count RSVPs
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - uses: actions/cache@v1
+        with:
+          path: /root/.jbang
+          key: $-jbang-$
+          restore-keys: |
+              $-jbang-
+      - name: jbang
+        uses: jbangdev/jbang-action@v0.114.0
+        with:
+          script: countRsvps.java
+        env:
+          GITHUB_REPO: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ISSUE_NUMBER: ${{ github.event.issue.number }}
